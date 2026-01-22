@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Usuario - Sistema de Ventas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button onclick="goBack()" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: 2px solid white; color: white; padding: 10px 20px; border-radius: 25px; font-weight: 500;">← Volver</button>
+            <h1 id="userTitle">Detalle del Usuario</h1>
+        </header>
+
+        <div class="user-detail-header">
+            <div id="userInfo"></div>
+            <div style="margin-top: 20px; text-align: center;">
+                <button class="edit-btn" id="addClothingBtn">Agregar Prenda</button>
+            </div>
+        </div>
+
+        <div class="clothing-section">
+            <h2>Prendas</h2>
+            <div id="clothingList"></div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar prenda -->
+    <div id="addClothingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddClothingModal()">&times;</span>
+            <h2 id="addClothingTitle">Agregar Prenda</h2>
+            <form id="quickClothingForm">
+                <input type="hidden" id="quickUserId">
+                <input type="text" id="quickDescription" placeholder="Descripción de la prenda" required>
+                <input type="number" id="quickSalePrice" placeholder="Precio de venta" step="0.01" required>
+                <input type="number" id="quickUserPrice" placeholder="Precio para el usuario" step="0.01" required>
+                <select id="quickStatus">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="vendido">Vendido</option>
+                    <option value="pagado">Pagado al usuario</option>
+                </select>
+                <div class="modal-buttons">
+                    <button type="submit">Agregar Prenda</button>
+                    <button type="button" onclick="closeAddClothingModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para editar prenda -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <h2>Editar Prenda</h2>
+            <form id="editForm">
+                <input type="hidden" id="editItemId">
+                <input type="text" id="editDescription" placeholder="Descripción de la prenda" required>
+                <input type="number" id="editSalePrice" placeholder="Precio de venta" step="0.01" required>
+                <input type="number" id="editUserPrice" placeholder="Precio para el usuario" step="0.01" required>
+                <select id="editStatus">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="vendido">Vendido</option>
+                    <option value="pagado">Pagado al usuario</option>
+                </select>
+                <div class="modal-buttons">
+                    <button type="submit">Guardar Cambios</button>
+                    <button type="button" onclick="closeEditModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="user-detail.js"></script>
+</body>
+</html>
